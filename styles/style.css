@@ -2,7 +2,7 @@
     display: grid;
     align-items: center;
     grid-template-columns: 1fr min-content 1fr;
-    height: 293PX;
+    height: 293px;
     padding: 0 50px;
 }
 
@@ -16,7 +16,7 @@
     list-style: circle;
     font-weight: 400;
     font-size: 18px;
-    line-height: 21.13px;
+    line-height: 1.17;
     letter-spacing: normal;
 }
 
@@ -45,7 +45,7 @@
     flex-direction: column;
     font-weight: 400;
     font-size: 18px;
-    line-height: 24.3px;
+    line-height: 1.35;
     letter-spacing: normal;
 }
 
@@ -182,7 +182,7 @@
     font-weight: 500;
     font-size: 22px;
     line-height: 25.83px;
-    letter-spacing: 0%;
+    letter-spacing: 0;
     text-align: center;
     text-transform: uppercase;
 
@@ -198,8 +198,7 @@
     font-weight: 700;
     font-size: 40px;
     line-height: 46.96px;
-    letter-spacing: 0%;
-
+    letter-spacing: 0;
     text-transform: uppercase;
     margin: 0 0 27px 40px;
 }
@@ -275,7 +274,7 @@
     font-weight: 700;
     font-size: 22px;
     line-height: 26.4px;
-    letter-spacing: 0%;
+    letter-spacing: 0;
     text-decoration: underline;
     text-decoration-style: solid;
     text-decoration-thickness: auto;
@@ -296,7 +295,7 @@
     font-weight: 400;
     font-size: 20px;
     line-height: 23.48px;
-    letter-spacing: 0%;
+    letter-spacing: 0;
     text-decoration: underline;
     color: #000;
     display: inline-block;
@@ -357,7 +356,7 @@
     font-weight: 700;
     font-size: 40px;
     line-height: 46.96px;
-    letter-spacing: 0%;
+    letter-spacing: 0;
     text-transform: uppercase;
 }
 
@@ -373,8 +372,7 @@
     font-weight: 400;
     font-size: 20px;
     line-height: 24px;
-    letter-spacing: 0%;
-
+    letter-spacing: 0;
 }
 
 .footer {
@@ -396,8 +394,7 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 24.3px;
-    letter-spacing: 0%;
-
+    letter-spacing: 0;
 }
 
 .footer-phone,
@@ -434,7 +431,7 @@
     font-family: Raleway;
     font-weight: 400;
     font-size: 18px;
-    line-height: 21.13pxpx;
+    line-height: 1.17;
 }
 
 .footer-social {
