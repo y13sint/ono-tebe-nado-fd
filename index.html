@@ -195,5 +195,136 @@
                 </li>
             </ul>
         </footer>
+        <script>
+            function displayCoverElementsInfo() {
+                // Создаем контейнер для вывода информации
+                const infoContainer = document.createElement('div');
+                infoContainer.style.position = 'fixed';
+                infoContainer.style.top = '10px';
+                infoContainer.style.right = '10px';
+                infoContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+                infoContainer.style.color = 'white';
+                infoContainer.style.padding = '15px';
+                infoContainer.style.zIndex = '9999';
+                infoContainer.style.maxHeight = '80vh';
+                infoContainer.style.overflow = 'auto';
+                infoContainer.style.fontSize = '14px';
+                infoContainer.style.fontFamily = 'monospace';
+                
+                // Функция для получения информации об элементе
+                function getElementInfo(element, name) {
+                    const rect = element.getBoundingClientRect();
+                    const compStyle = window.getComputedStyle(element);
+                    
+                    return {
+                        name,
+                        element,
+                        height: rect.height,
+                        marginTop: parseInt(compStyle.marginTop),
+                        marginBottom: parseInt(compStyle.marginBottom),
+                        paddingTop: parseInt(compStyle.paddingTop),
+                        paddingBottom: parseInt(compStyle.paddingBottom),
+                        top: rect.top + window.scrollY,
+                        bottom: rect.bottom + window.scrollY
+                    };
+                }
+                
+                // Получаем все элементы секции cover
+                const coverSection = document.querySelector('.cover');
+                const coverOverlay = document.querySelector('.cover-overlay');
+                const coverContent = document.querySelector('.cover-content');
+                const coverTitle = document.querySelector('.cover-title');
+                const coverTitleH1 = coverTitle.querySelector('h1');
+                const titleParts = document.querySelectorAll('.cover-title-part');
+                const coverDescription = document.querySelector('.cover-description');
+                const coverDescText = document.querySelector('.cover-description-text');
+                const betButton = document.querySelector('.bet-button');
+                
+                // Собираем информацию
+                const elements = [
+                    getElementInfo(coverSection, '.cover'),
+                    getElementInfo(coverOverlay, '.cover-overlay'),
+                    getElementInfo(coverContent, '.cover-content'),
+                    getElementInfo(coverTitle, '.cover-title'),
+                    getElementInfo(coverTitleH1, 'h1 в .cover-title')
+                ];
+                
+                // Добавляем информацию о частях заголовка
+                titleParts.forEach((part, index) => {
+                    let name = '';
+                    if (part.classList.contains('cover-title-left')) name = 'ОНО';
+                    else if (part.classList.contains('cover-title-center')) name = 'ТЕБЕ';
+                    else if (part.classList.contains('cover-title-right')) name = 'НАДО';
+                    
+                    elements.push(getElementInfo(part, `span "${name}"`));
+                });
+                
+                // Добавляем остальные элементы
+                elements.push(
+                    getElementInfo(coverDescription, '.cover-description'),
+                    getElementInfo(coverDescText, '.cover-description-text'),
+                    getElementInfo(betButton, '.bet-button')
+                );
+                
+                // Формируем HTML с информацией
+                let html = '<h3>Размеры элементов секции cover</h3>';
+                
+                elements.forEach(info => {
+                    html += `<div style="margin-bottom: 10px; border-bottom: 1px dashed #555; padding-bottom: 5px;">
+                        <strong>${info.name}</strong><br>
+                        Высота: ${Math.round(info.height)}px<br>
+                        Margin: ${info.marginTop}px верх, ${info.marginBottom}px низ<br>
+                        Padding: ${info.paddingTop}px верх, ${info.paddingBottom}px низ<br>
+                        Позиция: Y=${Math.round(info.top)}px - ${Math.round(info.bottom)}px<br>
+                    </div>`;
+                });
+                
+                // Добавляем информацию о расстояниях между элементами
+                html += '<h3>Расстояния между элементами</h3>';
+                
+                for (let i = 0; i < elements.length - 1; i++) {
+                    const current = elements[i];
+                    const next = elements[i + 1];
+                    
+                    // Считаем расстояние от нижнего края текущего до верхнего края следующего
+                    const distance = next.top - (current.bottom);
+                    
+                    html += `<div style="margin-bottom: 8px;">
+                        От <strong>${current.name}</strong> до <strong>${next.name}</strong>: ${Math.round(distance)}px
+                    </div>`;
+                }
+                
+                // Добавляем кнопку для скрытия/показа информации
+                const toggleButton = document.createElement('button');
+                toggleButton.textContent = 'Скрыть/Показать';
+                toggleButton.style.position = 'fixed';
+                toggleButton.style.top = '10px';
+                toggleButton.style.right = '10px';
+                toggleButton.style.zIndex = '10000';
+                toggleButton.style.padding = '5px 10px';
+                
+                toggleButton.addEventListener('click', () => {
+                    if (infoContainer.style.display === 'none') {
+                        infoContainer.style.display = 'block';
+                        toggleButton.style.right = `${infoContainer.offsetWidth + 20}px`;
+                    } else {
+                        infoContainer.style.display = 'none';
+                        toggleButton.style.right = '10px';
+                    }
+                });
+                
+                // Выводим информацию
+                infoContainer.innerHTML = html;
+                document.body.appendChild(infoContainer);
+                document.body.appendChild(toggleButton);
+            }
+
+            // Запускаем скрипт после полной загрузки страницы
+            if (document.readyState === 'complete') {
+                displayCoverElementsInfo();
+            } else {
+                window.addEventListener('load', displayCoverElementsInfo);
+            }
+        </script>
     </body>
 </html>
