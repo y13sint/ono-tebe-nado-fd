@@ -167,7 +167,7 @@
 }
 
 .cover-description {
-    /*background-color: aqua;*/
+    background-color: aqua;
     width: 1000px;
     display: flex;
     justify-content: space-between;
@@ -179,6 +179,7 @@
 }
 
 .cover-description-text {
+    background-color: blueviolet;
     font-family: Raleway, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 400;
     font-size: 22px;
