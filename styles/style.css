@@ -167,7 +167,7 @@
 }
 
 .cover-description {
-    background-color: aqua;
+
     width: 1000px;
     display: flex;
     justify-content: space-between;
@@ -179,36 +179,17 @@
 }
 
 .cover-description-text {
-    background-color: blueviolet;
     font-family: Raleway, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 400;
     font-size: 22px;
     line-height: 28px;
     letter-spacing: 0;
+    word-spacing: 18px;
     color: white;
     text-transform: uppercase;
 }
 
-/* Классы для пробелов с разным межбуквенным интервалом */
-.space-letter-0 {
-    display: inline-block;
-    letter-spacing: 0;
-}
 
-.space-letter-90 {
-    display: inline-block;
-    letter-spacing: 0.9em;
-}
-
-.space-letter-80 {
-    display: inline-block;
-    letter-spacing: 0.8em;
-}
-
-.space-letter-110 {
-    display: inline-block;
-    letter-spacing: 1.1em;
-}
 
 .bet-button {
     background-color: transparent;
@@ -329,9 +310,9 @@
     letter-spacing: 0;
     color: #000;
     display: inline-block;
-    border-bottom: 1px solid black;
     margin-top: 30px;
     margin-left: 40px;
+    text-decoration: underline;
 }
 
 .about {
@@ -401,7 +382,7 @@
 }
 
 .footer {
-    width: 1052px;
+    width: 1100px;
     margin: 0 auto;
     padding: 0 50px 83px;
     box-sizing: border-box;
